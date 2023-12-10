@@ -25,16 +25,6 @@ DataBaseDesign::Folder::Folder(const int64_t& folder_key, const std::string& fol
 {
 }
 
-int DataBaseDesign::Folder::callback(void* vector_pointer, int argc, char** argv, char** azColName)
-{
-	std::vector<DataBaseDesign::Folder>* folders = reinterpret_cast<std::vector<DataBaseDesign::Folder>*>(vector_pointer);
-	folders->emplace_back(DataBaseDesign::Folder(argv));
-	auto& folder = (*folders).back();
-	std::cout << std::format("folder_key: {}, folder_name: {}\n", folder.folder_key, folder.folder_name);
-
-	return 0;
-}
-
 std::string DataBaseDesign::Folder::get_table_name()
 {
 	return std::string("FOLDER");

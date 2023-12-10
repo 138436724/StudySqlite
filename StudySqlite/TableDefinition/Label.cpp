@@ -23,16 +23,6 @@ DataBaseDesign::Label::Label(const int64_t& label_key, const std::string& label_
 {
 }
 
-int DataBaseDesign::Label::callback(void* vector_pointer, int argc, char** argv, char** azColName)
-{
-	std::vector<DataBaseDesign::Label>* labels = reinterpret_cast<std::vector<DataBaseDesign::Label>*>(vector_pointer);
-	labels->emplace_back(DataBaseDesign::Label(argv));
-	auto& label = (*labels).back();
-	std::cout << std::format("label_file_key: {}, label_key: {}\n", label.label_key, label.label_name);
-
-	return 0;
-}
-
 std::string DataBaseDesign::Label::get_table_name()
 {
 	return std::string("LABEL");
@@ -40,7 +30,10 @@ std::string DataBaseDesign::Label::get_table_name()
 
 std::string DataBaseDesign::Label::get_create_table_sql()
 {
-	return std::string();
+	return std::format(
+		"CREATE TABLE {} ("  \
+		"label_key INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"    \
+		"label_name TEXT NOT NULL);", get_table_name());
 }
 
 std::string DataBaseDesign::Label::get_alter_table_sql()
@@ -55,12 +48,14 @@ std::string DataBaseDesign::Label::get_drop_table_sql()
 
 std::string DataBaseDesign::Label::get_insert_record_sql()
 {
-	return std::string();
+	return std::format(
+		"INSERT INTO {} (label_name)"  \
+		"VALUES ('{}'); ", get_table_name(), label_name);
 }
 
 std::string DataBaseDesign::Label::get_select_record_sql()
 {
-	return std::string();
+	return std::string(std::format("SELECT * from {}", get_table_name()));
 }
 
 std::string DataBaseDesign::Label::get_update_record_sql()

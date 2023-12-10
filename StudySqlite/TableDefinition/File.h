@@ -29,7 +29,6 @@ namespace DataBaseDesign {
 		File(char** argv);
 		File(const std::string& file_name, const std::string& file_path, const std::string& modify_time, const std::string& file_image, const int64_t& parent_key, const int64_t& suffix_key);
 		File(const int64_t& file_key, const std::string& file_name, const std::string& file_path, const std::string& modify_time, const std::string& file_image, const int64_t& parent_key, const int64_t& suffix_key);
-		static int callback(void* vector_pointer, int argc, char** argv, char** azColName);
 
 	public:
 		// Í¨¹ý BaseTable ¼Ì³Ð

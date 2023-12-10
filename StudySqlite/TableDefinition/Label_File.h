@@ -24,7 +24,6 @@ namespace DataBaseDesign {
 		Label_File(char** argv);
 		Label_File(const int64_t& label_key, const int64_t& file_key);
 		Label_File(const int64_t& label_file_key, const int64_t& label_key, const int64_t& file_key);
-		static int callback(void* vector_pointer, int argc, char** argv, char** azColName);
 
 	public:
 		// Í¨¹ý BaseTable ¼Ì³Ð

@@ -23,16 +23,6 @@ DataBaseDesign::Label_File::Label_File(const int64_t& label_file_key, const int6
 {
 }
 
-int DataBaseDesign::Label_File::callback(void* vector_pointer, int argc, char** argv, char** azColName)
-{
-    std::vector<DataBaseDesign::Label_File>* labels_files = reinterpret_cast<std::vector<DataBaseDesign::Label_File>*>(vector_pointer);
-    labels_files->emplace_back(DataBaseDesign::Label_File(argv));
-    auto& label_file = (*labels_files).back();
-    std::cout << std::format("label_file_key: {}, label_key: {}\n", label_file.label_file_key, label_file.label_key);
-
-    return 0;
-}
-
 std::string DataBaseDesign::Label_File::get_table_name()
 {
     return std::string("LABEL_FILE");

@@ -19,7 +19,6 @@ namespace DataBaseDesign {
 		Label(char** argv);
 		Label(const std::string& label_name);
 		Label(const int64_t& label_key, const std::string& label_name);
-		static int callback(void* vector_pointer, int argc, char** argv, char** azColName);
 	
 	public:
 		// Í¨¹ý BaseTable ¼Ì³Ð

@@ -25,7 +25,6 @@ namespace DataBaseDesign {
 		Suffix(char** argv);
 		Suffix(const std::string& suffix_name);
 		Suffix(const int64_t& suffix_key, const std::string& suffix_name);
-		static int callback(void* vector_pointer, int argc, char** argv, char** azColName);
 
 	public:
 		// Í¨¹ý BaseSQLStatements ¼Ì³Ð

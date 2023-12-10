@@ -23,7 +23,6 @@ namespace DataBaseDesign {
 		Folder(char** argv);
 		Folder(const std::string& folder_name, const std::string& folder_path, const int64_t& parent_key);
 		Folder(const int64_t& folder_key, const std::string& folder_name, const std::string& folder_path, const int64_t& parent_key);
-		static int callback(void* vector_pointer, int argc, char** argv, char** azColName);
 
 	public:
 		// Í¨¹ý BaseTable ¼Ì³Ð

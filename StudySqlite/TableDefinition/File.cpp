@@ -25,16 +25,6 @@ DataBaseDesign::File::File(const int64_t& file_key, const std::string& file_name
 {
 }
 
-int DataBaseDesign::File::callback(void* vector_pointer, int argc, char** argv, char** azColName)
-{
-	std::vector<DataBaseDesign::File>* files = reinterpret_cast<std::vector<DataBaseDesign::File>*>(vector_pointer);
-	files->emplace_back(DataBaseDesign::File(argv));
-	auto& file = (*files).back();
-	std::cout << std::format("file_key: {}, file_name: {}\n", file.file_key, file.file_name);
-
-	return 0;
-}
-
 std::string DataBaseDesign::File::get_table_name()
 {
 	return std::string("FILE");

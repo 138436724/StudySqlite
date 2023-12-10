@@ -1,4 +1,5 @@
 #include "SqliteHandle.h"
+#include <string>
 
 DataBaseDesign::SQLiteHandle::SQLiteHandle()
 	:db(nullptr), zErrMsg(nullptr), rc(0), sql(nullptr)
@@ -20,4 +21,11 @@ bool DataBaseDesign::SQLiteHandle::Initialize(const std::string& db_path)
 		return false;
 	}
 	return true;
+}
+
+int DataBaseDesign::SQLiteHandle::CheckTabelExistCallback(void* bool_pointer, int argc, char** argv, char** azColName)
+{
+	bool* b = reinterpret_cast<bool*>(bool_pointer);
+	(*b) = (std::stoll(argv[0]) > 0);
+	return 0;
 }

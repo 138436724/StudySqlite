@@ -23,17 +23,6 @@ DataBaseDesign::Suffix::Suffix(const int64_t& suffix_key, const std::string& suf
 {
 }
 
-
-int DataBaseDesign::Suffix::callback(void* vector_pointer, int argc, char** argv, char** azColName)
-{
-	std::vector<DataBaseDesign::Suffix>* suffixes = reinterpret_cast<std::vector<DataBaseDesign::Suffix>*>(vector_pointer);
-	suffixes->emplace_back(DataBaseDesign::Suffix(argv));
-	auto& suffix = (*suffixes).back();
-	std::cout << std::format("suffix_key: {}, suffix_name: {}\n", suffix.suffix_key, suffix.suffix_name);
-
-	return 0;
-}
-
 std::string DataBaseDesign::Suffix::get_table_name()
 {
 	return std::string("SUFFIX");
@@ -41,11 +30,10 @@ std::string DataBaseDesign::Suffix::get_table_name()
 
 std::string DataBaseDesign::Suffix::get_create_table_sql()
 {
-	std::string s = std::format(
+	return std::format(
 		"CREATE TABLE {} ("  \
 		"suffix_key INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"    \
 		"suffix_name TEXT NOT NULL);", get_table_name());
-	return s;
 }
 
 std::string DataBaseDesign::Suffix::get_alter_table_sql()
@@ -60,10 +48,9 @@ std::string DataBaseDesign::Suffix::get_drop_table_sql()
 
 std::string DataBaseDesign::Suffix::get_insert_record_sql()
 {
-	std::string s = std::format(
+	return std::format(
 		"INSERT INTO {} (suffix_name)"  \
 		"VALUES ('{}'); ", get_table_name(), suffix_name);
-	return s;
 }
 
 std::string DataBaseDesign::Suffix::get_select_record_sql()
