@@ -10,19 +10,27 @@ namespace DataBaseDesign {
 	************************************/
 	class Label :public BaseTable
 	{
+	public:
 		int64_t label_key;
 		std::string label_name;
-
-		int callback(void* NotUsed, int argc, char** argv, char** azColName)
-		{
-			label_key = std::stoll(azColName[0]);
-			label_name = azColName[1];
-			/*int i;
-			for (i = 0; i < argc; i++) {
-				printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
-			}
-			printf("\n");*/
-			return 0;
-		}
+	
+	public:
+		Label();
+		Label(char** argv);
+		Label(const std::string& label_name);
+		Label(const int64_t& label_key, const std::string& label_name);
+		static int callback(void* vector_pointer, int argc, char** argv, char** azColName);
+	
+	public:
+		// Í¨¹ý BaseTable ¼Ì³Ð
+		std::string get_table_name() override;
+		std::string get_create_table_sql() override;
+		std::string get_alter_table_sql() override;
+		std::string get_drop_table_sql() override;
+		std::string get_insert_record_sql() override;
+		std::string get_select_record_sql() override;
+		std::string get_update_record_sql() override;
+		std::string get_delete_record_sql() override;
+		std::string get_other_sql() override;
 	};
 }

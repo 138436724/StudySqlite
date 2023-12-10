@@ -28,7 +28,7 @@ int main()
 	DataBaseDesign::Suffix(".rar") };
 	handle.InsertRecord<DataBaseDesign::Suffix>(suffixes);
 
-	std::vector<DataBaseDesign::Suffix> s = handle.SelectRecord<DataBaseDesign::Suffix>(suffix);
+	std::vector<DataBaseDesign::Suffix> s = std::move( handle.SelectRecord<DataBaseDesign::Suffix>(suffix));
 
 	return 0;
 }

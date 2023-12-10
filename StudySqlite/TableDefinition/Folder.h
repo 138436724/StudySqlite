@@ -17,5 +17,24 @@ namespace DataBaseDesign {
 		std::string folder_name;
 		std::string folder_path;
 		int64_t parent_key;
+
+	public:
+		Folder();
+		Folder(char** argv);
+		Folder(const std::string& folder_name, const std::string& folder_path, const int64_t& parent_key);
+		Folder(const int64_t& folder_key, const std::string& folder_name, const std::string& folder_path, const int64_t& parent_key);
+		static int callback(void* vector_pointer, int argc, char** argv, char** azColName);
+
+	public:
+		// Í¨¹ı BaseTable ¼Ì³Ğ
+		std::string get_table_name() override;
+		std::string get_create_table_sql() override;
+		std::string get_alter_table_sql() override;
+		std::string get_drop_table_sql() override;
+		std::string get_insert_record_sql() override;
+		std::string get_select_record_sql() override;
+		std::string get_update_record_sql() override;
+		std::string get_delete_record_sql() override;
+		std::string get_other_sql() override;
 	};
 }

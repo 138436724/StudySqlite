@@ -16,24 +16,27 @@ namespace DataBaseDesign
 
 	public:
 		/************* 数据库操作 *************/
-		// 1.数据库初始化
+		// Open
 		bool Initialize(const std::string& db_path);
 
 		////////////// 模板函数 //////////////
-		// 2.表的建立
+		// Create
 		template <typename T>
 		bool CreateTable(T& table);
 
-		// 3.Insert
+		// Insert
 		template <typename T>
 		bool InsertRecord(T& table);
 
 		template<typename T>
 		bool InsertRecord(std::vector<T>& tables);
 
-		// 3.增删改查
+		// Select
 		template <typename T>
-		std::vector<T> SelectRecord(T& table);//添加标签
+		std::vector<T> SelectRecord(T& table);
+
+		// Close
+		
 
 	private:
 		// 数据库相关
@@ -91,7 +94,7 @@ namespace DataBaseDesign
 			}
 			else {
 				fprintf(stdout, "Records created successfully\n");
-				
+
 			}
 		}
 		return true;

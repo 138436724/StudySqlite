@@ -3,6 +3,16 @@
 #include <iostream>
 #include <vector>
 
+DataBaseDesign::Suffix::Suffix()
+	: suffix_key(0), suffix_name("")
+{
+}
+
+DataBaseDesign::Suffix::Suffix(char** argv)
+	: suffix_key(std::stoll(argv[0])), suffix_name(argv[1])
+{
+}
+
 DataBaseDesign::Suffix::Suffix(const std::string& suffix_name)
 	: suffix_key(0), suffix_name(suffix_name)
 {
@@ -14,10 +24,10 @@ DataBaseDesign::Suffix::Suffix(const int64_t& suffix_key, const std::string& suf
 }
 
 
-int DataBaseDesign::Suffix::callback(void* suffix_vector_pointer, int argc, char** argv, char** azColName)
+int DataBaseDesign::Suffix::callback(void* vector_pointer, int argc, char** argv, char** azColName)
 {
-	std::vector<DataBaseDesign::Suffix>* suffixes = reinterpret_cast<std::vector<DataBaseDesign::Suffix>*>(suffix_vector_pointer);
-	suffixes->emplace_back(DataBaseDesign::Suffix(std::stoll(argv[0]), argv[1]));
+	std::vector<DataBaseDesign::Suffix>* suffixes = reinterpret_cast<std::vector<DataBaseDesign::Suffix>*>(vector_pointer);
+	suffixes->emplace_back(DataBaseDesign::Suffix(argv));
 	auto& suffix = (*suffixes).back();
 	std::cout << std::format("suffix_key: {}, suffix_name: {}\n", suffix.suffix_key, suffix.suffix_name);
 
@@ -75,5 +85,3 @@ std::string DataBaseDesign::Suffix::get_other_sql()
 {
 	return std::string();
 }
-
-
