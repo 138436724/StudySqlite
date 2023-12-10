@@ -21,7 +21,7 @@ namespace DataBaseDesign {
 		std::string suffix_name;
 
 	public:
-		Suffix() = default;
+		Suffix();
 		Suffix(const std::string& suffix_name);
 		Suffix(const int64_t& suffix_key, const std::string& suffix_name);
 		static int callback(void* suffixes, int argc, char** argv, char** azColName);

@@ -3,6 +3,11 @@
 #include <iostream>
 #include <vector>
 
+DataBaseDesign::Suffix::Suffix()
+	: suffix_key(0), suffix_name("")
+{
+}
+
 DataBaseDesign::Suffix::Suffix(const std::string& suffix_name)
 	: suffix_key(0), suffix_name(suffix_name)
 {
@@ -75,5 +80,3 @@ std::string DataBaseDesign::Suffix::get_other_sql()
 {
 	return std::string();
 }
-
-

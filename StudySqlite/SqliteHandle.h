@@ -91,7 +91,7 @@ namespace DataBaseDesign
 			}
 			else {
 				fprintf(stdout, "Records created successfully\n");
-				
+
 			}
 		}
 		return true;
