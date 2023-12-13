@@ -136,7 +136,6 @@
     <ClCompile Include="TableDefinition\Folder.cpp" />
     <ClCompile Include="TableDefinition\Label.cpp" />
     <ClCompile Include="TableDefinition\Label_File.cpp" />
-    <ClCompile Include="SqliteHandle.cpp" />
     <ClCompile Include="TableDefinition\Suffix.cpp" />
     <ClCompile Include="TableDefinition\Suffix.h" />
     <ClCompile Include="main.cpp" />

@@ -2,7 +2,7 @@
 
 #include "BaseTable.h"
 
-namespace DataBaseDesign {
+namespace DatabaseDesign {
 	/***************************************************************
 	* 关于File表的设计
 	* 1.主键：自增的，唯一标识，由数据库生成
@@ -13,7 +13,7 @@ namespace DataBaseDesign {
 	* 6.父路径的主键
 	* 7.Suffix的主键
 	***************************************************************/
-	class File :public BaseTable
+	class File final :public BaseTable
 	{
 	public:
 		int64_t file_key;

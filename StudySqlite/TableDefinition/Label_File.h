@@ -2,7 +2,7 @@
 
 #include "BaseTable.h"
 
-namespace DataBaseDesign {
+namespace DatabaseDesign {
 	/*************************************************
 	* 关于Label与File关联表的设计
 	* 1.主键：自增的，唯一标识，由数据库生成
@@ -12,7 +12,7 @@ namespace DataBaseDesign {
 	* n 对 1 的关系，在 n 表里面存 1 表的 key 就可以了
 	* 1 对 1 关系可以存在一张表里面
 	*************************************************/
-	class Label_File :public BaseTable
+	class Label_File final :public BaseTable
 	{
 	public:
 		int64_t label_file_key;

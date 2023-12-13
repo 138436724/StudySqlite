@@ -8,7 +8,7 @@
 * 请开发者继承BaseTable，并在需要的时候自行填充语句。
 * 务必提供一个参数为 char** argv 的构造函数，回调函数中将会调用它。
 **************************************************************/
-namespace DataBaseDesign {
+namespace DatabaseDesign {
 	/*
 	* 基础信息和SQL语句
 	*/

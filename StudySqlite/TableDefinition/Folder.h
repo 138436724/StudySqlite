@@ -2,7 +2,7 @@
 
 #include "BaseTable.h"
 
-namespace DataBaseDesign {
+namespace DatabaseDesign {
 	/************************************
 	* 关于Folder表的设计：
 	* 1.主键：自增的，唯一标识，由数据库生成
@@ -10,7 +10,7 @@ namespace DataBaseDesign {
 	* 3.文件夹完整路径
 	* 4.父路径的主键
 	************************************/
-	class Folder :public BaseTable
+	class Folder final :public BaseTable
 	{
 	public:
 		int64_t folder_key;

@@ -2,13 +2,13 @@
 
 #include "BaseTable.h"
 
-namespace DataBaseDesign {
+namespace DatabaseDesign {
 	/************************************
 	* 关于Label表的设计：
 	* 1.主键：自增的，唯一标识，由数据库生成
 	* 2.名称：用户定义的Label
 	************************************/
-	class Label :public BaseTable
+	class Label final :public BaseTable
 	{
 	public:
 		int64_t label_key;

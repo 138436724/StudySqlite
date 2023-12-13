@@ -39,9 +39,6 @@
     <ClCompile Include="TableDefinition\Label_File.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="SqliteHandle.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TableDefinition\BaseTable.h">

@@ -6,49 +6,60 @@
 
 int main()
 {
+	std::filesystem::path p("C:/Users/22685/Desktop/Language/C++/StudySqlite/StudySqlite/TableDefinition");
+	std::cout << "根目录:" << p.root_directory() << std::endl;
+	std::cout << "根目录:" << p.root_name() << std::endl;
+	std::cout << "根目录:" << p.root_path() << std::endl;
+	std::cout << "不带扩展的文件名:" << p.stem() << std::endl;
+	std::cout << "扩展名:" << p.extension() << std::endl;
+	std::cout << "文件名:" << p.filename() << std::endl;
+	std::cout << "相对目录:" << p.relative_path() << std::endl;
+	std::cout << "父目录:" << p.parent_path() << std::endl;
+
+
 	std::filesystem::path db_path("test.db");
 
 	if (std::filesystem::exists(db_path))
 	{
-		std::filesystem::remove(db_path);
+		//std::filesystem::remove(db_path);
 	}
 
-	DataBaseDesign::SQLiteHandle handle{};
+	DatabaseDesign::SQLiteHandle handle{};
 	if (!handle.Initialize(db_path.string()))
 	{
 		return -1;
 	}
 
-	DataBaseDesign::Suffix suffix{};
+	DatabaseDesign::Suffix suffix{};
 
 	if (!handle.CheckTabelExist(suffix))
 	{
-		handle.CreateTable<DataBaseDesign::Suffix>(suffix);
-		std::vector<DataBaseDesign::Suffix> suffixes{
-			DataBaseDesign::Suffix("png"),
-			DataBaseDesign::Suffix("hdr"),
-			DataBaseDesign::Suffix("jpg") };
-		handle.InsertRecord<DataBaseDesign::Suffix>(suffixes);
+		handle.CreateTable<DatabaseDesign::Suffix>(suffix);
+		std::vector<DatabaseDesign::Suffix> suffixes{
+			DatabaseDesign::Suffix("png"),
+			DatabaseDesign::Suffix("hdr"),
+			DatabaseDesign::Suffix("jpg") };
+		handle.InsertRecord<DatabaseDesign::Suffix>(suffixes);
 	}
 
-	std::vector<DataBaseDesign::Suffix> s = handle.SelectRecord<DataBaseDesign::Suffix>(suffix);
+	std::vector<DatabaseDesign::Suffix> s = handle.SelectRecord<DatabaseDesign::Suffix>(suffix);
 
 	for (auto& a : s)
 	{
 		std::cout << a.suffix_key << a.suffix_name << std::endl;
 	}
 
-	DataBaseDesign::Label label{};
+	DatabaseDesign::Label label{};
 	if (!handle.CheckTabelExist(label))
 	{
-		handle.CreateTable<DataBaseDesign::Label>(label);
-		std::vector<DataBaseDesign::Label> labels{
-			DataBaseDesign::Label("图片"),
-			DataBaseDesign::Label("视频"),
-			DataBaseDesign::Label("小说") };
-		handle.InsertRecord<DataBaseDesign::Label>(labels);
+		handle.CreateTable<DatabaseDesign::Label>(label);
+		std::vector<DatabaseDesign::Label> labels{
+			DatabaseDesign::Label("图片"),
+			DatabaseDesign::Label("视频"),
+			DatabaseDesign::Label("小说") };
+		handle.InsertRecord<DatabaseDesign::Label>(labels);
 	}
-	std::vector<DataBaseDesign::Label> l = handle.SelectRecord<DataBaseDesign::Label>(label);
+	std::vector<DatabaseDesign::Label> l = handle.SelectRecord<DatabaseDesign::Label>(label);
 
 	for (auto& a : l)
 	{
